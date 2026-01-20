@@ -214,3 +214,25 @@ textarea{min-height:110px; resize:vertical}
   .content{padding:14px}
   .grid2{grid-template-columns:1fr}
 }
+
+.gallery{
+  display:grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap:10px;
+  margin-top:12px;
+}
+.pagecard{
+  background: rgba(10,14,20,.35);
+  border:1px solid rgba(34,48,67,.7);
+  border-radius: 16px;
+  padding:10px;
+}
+.pagecard img{
+  width:100%;
+  height:auto;
+  border-radius: 12px;
+  border:1px solid rgba(34,48,67,.55);
+  cursor:pointer;
+}
+.pagecard img:hover{border-color: rgba(255,59,59,.65)}
+.pagecard .small{margin-top:8px}
