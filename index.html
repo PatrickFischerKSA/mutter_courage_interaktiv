@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Mutter Courage – Interaktive Unterrichtseinheit (Selbstkorrektur)</title>
+  <title>Mutter Courage – Interaktive Unterrichtseinheit (komplett)</title>
   <link rel="stylesheet" href="assets/style.css" />
 </head>
 <body>
@@ -11,12 +11,14 @@
     <div class="topbar__left">
       <div class="brand">
         <div class="brand__title">Bertolt Brecht – <span class="nowrap">Mutter Courage und ihre Kinder</span></div>
-        <div class="brand__sub">Interaktive HTML-Version mit Sofort‑Selbstkorrektur (1× falsch → Feedback, 2× falsch → Hinweis, 3× falsch → Lösung)</div>
+        <div class="brand__sub">Interaktive HTML‑Umsetzung (Lehrerbasis) · Sofort‑Selbstkorrektur · Synonymerkennung · 1/2/3‑Fehler‑Regel</div>
       </div>
     </div>
     <div class="topbar__right">
       <div class="pill" id="progressPill">Fortschritt: 0%</div>
-      <button class="btn btn--ghost" id="btnToggleTeacher" title="zeigt Lösungen nach 3 Fehlversuchen automatisch; dieser Schalter blendet zusätzlich die Modelllösungen ein/aus (lokal)">Lehrer‑Ansicht</button>
+      <a class="btn btn--ghost" href="assets/UE_MutterCourage_Schueler.pdf" target="_blank" rel="noopener">PDF Schüler</a>
+      <a class="btn btn--ghost" href="assets/UE_MutterCourage_Lehrer.pdf" target="_blank" rel="noopener">PDF Lehrer</a>
+      <button class="btn btn--ghost" id="btnToggleTeacher" title="blendet Modelllösungen standardmäßig ein/aus (lokal)">Lehrer‑Ansicht</button>
       <button class="btn btn--danger" id="btnReset">Reset</button>
     </div>
   </header>
@@ -30,7 +32,7 @@
       <div class="sidebar__footer">
         <div class="small">
           Speichert deinen Stand lokal (localStorage).<br>
-          Tipp: Arbeite Abschnitt für Abschnitt.
+          1× falsch → „Falsch“ · 2× falsch → Hinweis · 3× falsch → Lösung
         </div>
       </div>
     </aside>
@@ -39,38 +41,60 @@
       <section class="card intro" id="start">
         <h1>Start</h1>
         <p>
-          Diese Seite basiert auf dem <strong>Lehrerexemplar</strong> der Unterrichtseinheit und enthält <strong>alle Arbeitsaufträge</strong> als interaktive Aufgaben.
-          Du bekommst sofort Rückmeldung und kannst Lösungen Schritt für Schritt erarbeiten.
+          Diese Seite verarbeitet <strong>sämtliche Inhalte</strong> der bereitgestellten Unterrichtseinheit als
+          (a) <strong>Material‑Galerie</strong> (Lehrer/Schüler) und (b) <strong>interaktive Aufgaben</strong> mit Sofortfeedback.
         </p>
-        <ul>
-          <li><strong>1. falsche Antwort:</strong> „Falsch“</li>
-          <li><strong>2. falsche Antwort:</strong> zusätzlicher <em>Hinweis</em></li>
-          <li><strong>3. falsche Antwort:</strong> <em>Modelllösung</em> wird eingeblendet</li>
-        </ul>
         <div class="notice">
-          <strong>Synonymerkennung:</strong> Viele Aufgaben akzeptieren mehrere Formulierungen. Rechtschreibung wird toleriert (leicht).
+          <strong>Hinweis zur Vollständigkeit:</strong> In einzelnen Teilen enthält das PDF <em>nur Arbeitsaufträge ohne ausgeschriebene Modelllösung</em>.
+          In diesen Fällen zeigt die Seite nach dem 3. Fehlversuch eine entsprechende Info (statt einer nicht vorhandenen Lösung).
         </div>
-        <div class="grid2">
+        <div class="grid2" style="margin-top:14px">
           <div class="mini-card">
-            <h3>Material</h3>
-            <p class="small">Wenn du parallel im PDF nachschlagen willst: die eingebetteten Abbildungen stammen aus dem Lehrer-PDF (Auswahl).</p>
-            <div class="thumbs" id="thumbs"></div>
+            <h3>Material (Bilder der PDF‑Seiten)</h3>
+            <p class="small">Unten findest du vollständige Galerien: Lehrer‑PDF (23 Seiten) und Schüler‑PDF (21 Seiten).</p>
+            <p class="small">Du kannst zusätzlich die PDFs oben direkt öffnen.</p>
           </div>
           <div class="mini-card">
-            <h3>So arbeitest du</h3>
-            <ol class="small">
-              <li>Abschnitt links wählen</li>
-              <li>Antwort eingeben</li>
-              <li>„Prüfen“ klicken</li>
-              <li>Bei Bedarf nochmals verbessern</li>
-            </ol>
+            <h3>Synonymerkennung</h3>
+            <ul class="small">
+              <li>kleine Rechtschreibfehler werden toleriert</li>
+              <li>mehrere Formulierungen gelten als korrekt</li>
+              <li>bei offenen Aufgaben: Schlüsselbegriffe werden geprüft</li>
+            </ul>
           </div>
         </div>
       </section>
 
+      <section class="card" id="material_lehrer">
+        <div class="section-head">
+          <div>
+            <h2>Material: Lehrer‑PDF (alle Seiten)</h2>
+            <div class="small">Komplette Galerie der PDF‑Seiten als Bilder (zum schnellen Nachschlagen).</div>
+          </div>
+          <div class="meta">
+            <span class="badge" id="badgeTeacherPages"></span>
+          </div>
+        </div>
+        <div class="gallery" id="galleryTeacher"></div>
+      </section>
+
+      <section class="card" id="material_schueler">
+        <div class="section-head">
+          <div>
+            <h2>Material: Schüler‑PDF (alle Seiten)</h2>
+            <div class="small">Komplette Galerie der Schülerfassung als Bilder.</div>
+          </div>
+          <div class="meta">
+            <span class="badge" id="badgeStudentPages"></span>
+          </div>
+        </div>
+        <div class="gallery" id="galleryStudent"></div>
+      </section>
+
       <div id="sections"></div>
+
       <footer class="footer">
-        <div class="small">© Unterrichtseinheit – interaktive Umsetzung (lokal im Browser). Kein Upload, keine Server‑Daten.</div>
+        <div class="small">Interaktive Umsetzung läuft vollständig lokal im Browser.</div>
       </footer>
     </main>
   </div>
